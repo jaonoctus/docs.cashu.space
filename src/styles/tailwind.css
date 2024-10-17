@@ -1,0 +1,59 @@
+:root {
+  --shiki-color-text: theme('colors.white');
+  --shiki-token-constant: theme('colors.emerald.300');
+  --shiki-token-string: theme('colors.emerald.300');
+  --shiki-token-comment: theme('colors.zinc.500');
+  --shiki-token-keyword: theme('colors.sky.300');
+  --shiki-token-parameter: theme('colors.pink.300');
+  --shiki-token-function: theme('colors.violet.300');
+  --shiki-token-string-expression: theme('colors.emerald.300');
+  --shiki-token-punctuation: theme('colors.zinc.200');
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.gradientText {
+  @apply bg-gradient-to-r from-violet-500 via-indigo-700 to-purple-500 bg-clip-text tracking-tight text-transparent dark:from-violet-300 dark:via-indigo-500 dark:to-purple-300;
+}
+<<<<<<< Updated upstream
+=======
+
+@font-face {
+  font-family: 'Roboto Mono';
+  src: url(https://fonts.google.com/specimen/Roboto+Mono);
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.splash-of-color {
+  background: radial-gradient(circle at 30% 30%, rgba(255, 165, 0, 0.5), transparent 50%),
+              radial-gradient(circle at 70% 70%, rgba(75, 0, 130, 0.5), transparent 50%);
+  mix-blend-mode: screen;
+}
+
+@keyframes wave {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    transform: translateX(5px) translateY(5px);
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 1;
+  }
+}
