@@ -10,7 +10,7 @@ export function Logo(props) {
         height="40"
         alt="Cashu.space"
       />
-      <span className="my-auto">Cashu.space</span>
+      <span className="my-auto text-lg md:text-xl">docs.cashu.space</span>
     </span>
   )
 }
