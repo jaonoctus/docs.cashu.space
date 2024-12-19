@@ -38,7 +38,7 @@ const features = [
   },
   {
     href: '#',
-    name: 'Untraceable',
+    name: 'Privacy focused',
     description:
       'Blind signatures preserve user privacy. Transactions are peer-to-peer.',
     icon: ChatBubbleIcon,
