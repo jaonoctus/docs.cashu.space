@@ -8,19 +8,21 @@ export const description = 'Frequently asked questions'
 
 Yes. In fact, there are many risks. Make sure to understand them before putting any sats into any Cashu mint/wallet.
 * Cashu protocol, wallets, and tools are still in early development. Funds might be lost forever due to bugs in the software or the protocol.
-* Cashu wallets are ecash wallet interfaces. They are not Lightning wallets, and they do not run a Lightning node. Cashu wallets leverage the Cashu protocol to communicate with Cashu mints to integrate with Lightning. Therefore, the mint is running the Lightning infrastructure and custodies the satoshis for the mints ecash users. Users have to trust the mint to redeem their ecash once they want to swap out to Lightning.
+* Cashu wallets are ecash wallet interfaces. They are not Lightning wallets, and they do not run a Lightning node. Cashu wallets leverage the Cashu protocol to communicate with Cashu mints to integrate with Lightning. Therefore, the mint is running the Lightning infrastructure and custodies the satoshis for the mints ecash users. Users must trust the mint to redeem their ecash once they want to swap out to Lightning.
 * Ecash tokens are bearer asset tokens. This means the data that gets stored in the wallet (browser local storage) represents the actual money itself. Should the storage be wiped, funds will be lost.
 * Please take these risks seriously. Don't put any money into Cashu mints/wallets that you're not willing to lose.
 
 ### How much privacy does Cashu provide?
-The Cashu protocol offers a blinding mechanism to unlink the creation of an ecash token from its redemption. This gives the mint or anyone else no direct link for parties involved in a transaction. The cashu protocol also works entirely without accounts. So theoretically it is impossible for a mint operator to determine how many users it has and who they are.
+The Cashu protocol offers a blinding mechanism to unlink the creation of an ecash token from its redemption. This gives the mint or anyone else no direct link for parties involved in a transaction. The Cashu protocol also works entirely without accounts. So theoretically it is impossible for a mint operator to determine how many users it has and who they are.
 There are a few things to consider though.
 #### Privacy chokepoints:
-* Swapping in and out of the mint requires Lightning transactions. While sender privacy is pretty good on Lightning, the mint will almost certaily be able to identify a receiver that is getting paid through the mint. This still doesn't deanonymize the sender, but it does give the mint the power to censor certain payments.
+* Swapping in and out of the mint requires Lightning transactions. While sender privacy is pretty good on Lightning, the mint will almost certainly be able to identify a receiver that is getting paid through the mint. This still doesn't deanonymize the sender, but it does give the mint the power to censor certain payments.
 * Larger amounts most likely have less good privacy properties, due to their token denominations being rare. Cashu uses fixed (power-of-2) token denominations to create a hide-in-the-crowd effect. But the larger a token gets, the more likely it is that fewer and fewer of them exists, and at some point there is no crowd to hide anymore. If there is only one token of a specific denomination, it can always be linked back to its creation.
+
 #### Inter-protocol privacy:
 * Cashu does offer decent privacy at the protocol level, but it does not take into consideration network level privacy. mints may try to collect network data such as access time, IP addresses and or other metadata. To achieve better network level privacy users should rely on tools that specialize in that, such as Tor, mixnets, VPNs etc..
-* Cashu transactions happen 'out-of-band', which shifts the responsibility to use secure channels for sending tokens. The most secure channel is to send tokens air-gapped (via QR codes), since it doesn't leave any trace of out-of-band data. If tokens need to be sent over a network, it should always be done over an end-to-end encrypted channel, preferably with self destructing messages.
+* Cashu transactions happen 'out-of-band', which shifts the responsibility to use secure channels for sending tokens. The most secure channel is to send tokens air-gapped (via QR codes), since it doesn't leave any trace of out-of-band data. If tokens need to be sent over a network, it should always be done over an end-to-end encrypted channel, preferably with self-destructing messages.
+
 ### How does the Cashu ecash protocol implement privacy?
 
  For an introduction to privacy in the Cashu protocol, see [Hide Your Nuts](http://lconf.gandlaf.com) or [Blinding Custodians with Cashu](https://www.youtube.com/watch?v=UNjVc-WYdgE&t=105s).  
@@ -40,17 +42,14 @@ No. Cashu doesn't have accounts. In fact, you don't need one. All the tokens are
  No, the mint does not know the Cashu ecash secret or unblinded signature (see [Nut-0](https://github.com/cashubtc/nuts/blob/main/00.md)). Therefore, there is no linkability between a Lightning invoice and Cashu ecash.  
 
 
-
 ## Mints
 
-**CAUTION:** Choose mints where you trust or know and trust the operator.  Use small amounts or immediately redeem tokens or swap tokens to your own mint.
+**CAUTION:** Choose mints where you trust or know and trust the operator.  Use small amounts or immediately redeem tokens or swap tokens to your own mint or a trusted mint.
 
 ### What is a mint?
 
 Mints are Lightning node runners that have decided to let you use their Lightning infrastructure to offer you a service. They will act as a custodian for your satoshis on the Lightning network, while they issue ecash to you, the user. You can think of it as in free banking, where the bank issues their own bank notes that is backed by gold.
 
-### Can mints see my IP address? 
-Yes. Cashu doesn't protect against network-level heuristics per default. Users should take precautions to protect themselves against leaking network metadata by using privacy tools such as Tor.
 
 ### Why can't I receive tokens from one mint into another mint?
 
@@ -60,17 +59,17 @@ To transfer tokens from one mint to another, use the Multimint Swap functionalit
 
 ### How do I send (swap) tokens from one mint to another?
 
-In your wallet UI, use the Multimint Swap functionality, which operates via Lightning invoices under the hood.
-* Cashu.me: On the Settings tab.
-* Nutstash: On the Mint tab. 
-* eNuts:  Go to Options->Mint Management->Funds->Multimint Swap
-
-Note: You must have 2 mints in order to send/swap between mints.
 
 ### Is there a list of mints?  Which mint should I run?
 Cashu is in its early development, use with small amounts. 
 
 You can see a list of some public mints on [Cashumints.space](https://cashumints.space) or [Bitcoin Mints](https://bitcoinmints.com/).
+
+### Are there any test mints?
+
+Yes, you can use:
+* [https://testnut.cashu.space](https://testnut.cashu.space) - a testnut mint with fees with unbacked fake ecash for testing  
+* [https://nofees.testnut.cashu.space](https://nofees.testnut.cashu.space) - a testnut mint with no fees with unbacked fake ecash for testing  
 
 ### Can I send and receive tokens to/from the same mint?
 
@@ -78,21 +77,20 @@ Yes, this is a common first test use case.  Also, sometimes you might send a tok
 
 ### How can I run my own mint?
 
-There are several ways to run a mint, depending on your needs-see the list of Mint implementations at [Awesome-Cashu](https://github.com/cashubtc/awesome-cashu)
+There are several ways to run a mint, depending on your needs-see the list of Mint implementations at [Awesome-Cashu](https://github.com/cashubtc/awesome-cashu).
 
 ## Wallets
 
 **CAUTION:** Do not open the same wallet in multiple browser tabs.
+
 ### What is a token?
-A "token" (also known as "ecash" or in slang "a nut") is a piece of data that consists of a blindly signed secret. It was signed by the mint with the private key for a specific amount. Therefore a token is an IOU representation of satoshis that are custodied at the mint.
-
-
+A "token" (also known as "ecash" or in slang "a nut") is a piece of data that consists of a blindly signed secret. It was signed by the mint with the private key for a specific amount. Therefore, a token is an IOU representation of satoshis that are custodied at the mint.
 
 ### What is an ecash wallet?
 An ecash wallet is a special type of wallet. Ecash wallets are always custodial, since the ecash itself has no value. Cashu ecash represents satoshis, but the keys that control the actual satoshis on-chain are at the mint. 
 Ecash wallets come with some additional features over traditional custodial wallets, such as:
 
-* No accounts: Since ecash is bearer asset tokens, Cashu doesn't require accounts and balances to keep track of users funds.
+* No accounts: Since ecash is bearer asset tokens, Cashu doesn't require accounts and balances to keep track of users' funds.
 
 * Enhanced privacy: Due to the fact that there are no accounts, plus the blinding mechanism for creating ecash, users inside a mint cannot be distinguished from one another.
 
@@ -100,53 +98,31 @@ Ecash wallets come with some additional features over traditional custodial wall
 
 * Stores all data locally: No data has to be stored at any servers.
 
-###  What if I don't trust a mint and don't want receive to a Cashu wallet?
-
- You can redeem your tokens immediately via Lightning invoice at https://redeem.cashu.me/
-
 
 ###  I have had pending tokens for quite some time, how do I resolve this?
 
  You can receive the tokens back to your own wallet. Check the transaction history in your wallet and locate the token to receive back into your wallet.
-
-###  Can I get a QR code for a token?
-
- In Cashu.me, if you send a token that is a power of 2, you will see a QR code (e.g., 2, 4, 8, 16, 32, 64, 128, etc). This is because only 1 token can fit in a QR code.
 
 ### Do invoices generated expire?
 
  This varies depending on the mint. 
 
 
-###  Why can't I pay a Lightning invoice from my Cashu ecash wallet? 
+## Wallet Seeds
 
- There can be several reasons:
-* On the Lightning network, sometimes there are network or routing issues when sending a Lightning payment. As with other Lightning payments, try again later. 
-* There may be a liquidity imbalance with the receiving node. 
+**CAUTION** Your seed can only restore ecash minted or received after the seed is generated.
 
-## Walllet Backups
+###  How do I restore?
 
-**CAUTION** Your current backup is invalid if you make additional transactions.  Re-do the backup to get a backup of current wallet state.
+You can restore from any wallet that supports restoring from seed. Derivation and restores are standardized.  See [Nut-13](https://github.com/cashubtc/nuts/blob/main/13.md). 
 
-###  How do I make a backup and restore?
+You need to save and connect to the mints you want to restore.  Currently, there is no "discovery" mechanism to let a wallet know which mints are supposed to be restored.
 
-  Backup and restore mechanisms are specific to each particular wallet.
-* Nutstash: On the Settings tab
-* Cashu.me: On the Welcome page. make a Backup.  You can then open a new browser and drop the Backup JSON file on the Welcome screen.  
 
-### Why can't I restore my cashu.me backup into Nutstash? 
+## Payment Requests
+###  How I do I do payment requests?
+In Cashu.me, to create payment requests, first enable: Settings -> Payment requests. (Optionally, you can also enable Claim automatically).
 
- Wallet backups are only for that particular wallet implementation. To move your ecash to another wallet implementation, send the ecash from wallet to wallet or via Lightning withdrawal and minting.
+In Cashu.me, you can then press Receive -> Ecash -> Request to access the Payment Request.
 
-## Nostr
-
-### How do I configure nostr?
-
-* Nutstash: On the Settings tab, configure Nostr. Use an external key or generate throwaway nostr keys. When you send tokens, you can then specify a Nostr pubkey. 
-
-* Nutshell: Follow the Nutshell instructions to configure Nostr by editing the .env file. You can then send tokens to a Nostr pubkey.
-
-* eNuts:  Under Contacts, set up your Nostr pubkey.
-
-* Minibits: Under Contacts.
 
