@@ -195,6 +195,7 @@ export const navigation = [
       { title: 'Mints', href: '/mints' },
       { title: 'Projects', href: '/projects' },
       { title: 'Libraries', href: '/libraries' },
+      { title: 'Merchants', href: '/merchants' },
       // { title: 'Wallets', href: '/clients' },
       { title: 'Contribute', href: '/contribute' },
       { title: 'FAQ', href: '/faq' },
