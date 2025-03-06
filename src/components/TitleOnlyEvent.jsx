@@ -3,7 +3,7 @@ import React from 'react';
 
 const TitleOnlyEvent = ({ event }) => {
   return (
-    <div class="bg p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+    <div className="bg p-6 rounded-lg shadow-sm hover:bg-opacity-90 transition-colors">
       <dt style={{ color: '#0070f3', marginBottom: '10px' }}>
         {event.title}
       </dt>

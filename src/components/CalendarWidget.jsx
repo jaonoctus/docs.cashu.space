@@ -4,7 +4,7 @@ import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import ICAL from 'ical.js';
-import TitleOnlyEvent from './TitleOnlyEvent'; // our custom component
+import TitleOnlyEvent from './TitleOnlyEvent';
 
 const localizer = momentLocalizer(moment);
 
