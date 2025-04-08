@@ -46,9 +46,14 @@ export function ModeToggle() {
       className="flex h-6 w-6 items-center justify-center rounded-md transition hover:bg-zinc-900/5 dark:hover:bg-white/5"
       aria-label="Toggle dark mode"
       onClick={toggleMode}
-    >
-      <SunIcon className="h-5 w-5 stroke-zinc-900 dark:hidden" />
-      <MoonIcon className="hidden h-5 w-5 stroke-white dark:block" />
-    </button>
+    > 
+           {/* Show the sun icon in dark mode, indicating a switch to light */}
+      <SunIcon className="hidden h-5 w-5 stroke-white  dark:block" />
+      {/* Show the moon icon in light mode, indicating a switch to dark */}
+      <MoonIcon className="h-5 w-5 stroke-zinc-900 dark:hidden" />
+     {/* this was showing opposite to standard */}
+    {/* <MoonIcon className="hidden h-5 w-5 stroke-white dark:block" />
+    <SunIcon className="h-5 w-5 stroke-zinc-900 dark:hidden" /> */}
+   </button>
   )
 }
