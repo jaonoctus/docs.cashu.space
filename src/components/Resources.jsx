@@ -5,7 +5,12 @@ const resources = [
   {
     href: '/resources/learn',
     name: 'Learn about Cashu',
-    description: 'Articles and Podcast about Cashu and Chaumian ecash.',
+    description: 'Presentations and Tutuorials about Cashu and Chaumian ecash.',
+  },
+  {
+    href: '/resources/podcasts',
+    name: 'Learn about Cashu',
+    description: 'Podcasts about Cashu and Chaumian ecash and privacy.',
   },
   {
     href: '/projects',
